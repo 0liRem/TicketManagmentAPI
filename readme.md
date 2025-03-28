@@ -3,20 +3,9 @@
 ![Python](https://img.shields.io/badge/python-3.7%2B-blue)
 ![Flask](https://img.shields.io/badge/flask-2.0.1-green)
 ![PostgreSQL](https://img.shields.io/badge/postgresql-10%2B-blueviolet)
+![REST](https://img.shields.io/badge/API-REST-brightgreen)
 
-A RESTful API for managing incident reports with full CRUD functionality.
-
-## Table of Contents
-- [Features](#features)
-- [Technologies](#technologies)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [API Endpoints](#api-endpoints)
-- [Validation Rules](#validation-rules)
-- [Usage Examples](#usage-examples)
-- [Web Interface](#web-interface)
-- [Potential Improvements](#potential-improvements)
-- [License](#license)
+A RESTful API for managing incident reports with full CRUD functionality, built with Flask and PostgreSQL.
 
 ## Features
 
@@ -25,24 +14,27 @@ A RESTful API for managing incident reports with full CRUD functionality.
 - Get specific incident details
 - Update incident status
 - Delete incident reports
-- Data persistence with PostgreSQL
-- Simple web interface included
+- Data validation and error handling
+- PostgreSQL database integration
 
-## Technologies
+## API Endpoints
 
-- **Backend**: Flask
-- **Database**: PostgreSQL
-- **ORM**: SQLAlchemy
-- **Frontend**: JS/HTML/CSS
+| Method | Endpoint           | Description                     |
+|--------|-------------------|---------------------------------|
+| POST   | `/incidents`      | Create new incident             |
+| GET    | `/incidents`      | List all incidents              |
+| GET    | `/incidents/{id}` | Get specific incident           |
+| PUT    | `/incidents/{id}` | Update incident status          |
+| DELETE | `/incidents/{id}` | Delete incident                 |
 
-## Requirements
+## Data Structure
 
-- Python 3.7+
-- PostgreSQL 10+
-
-## Installation
-
-1. **Clone the repository**:
-   ```bash
-   git clone [REPO_URL]
-   cd incident_api
+Each incident contains:
+```json
+{
+    "id": 1,
+    "reporter": "John Doe",
+    "description": "Server is not responding",
+    "status": "pending",
+    "created_at": "2023-05-20T12:00:00.000000"
+}
