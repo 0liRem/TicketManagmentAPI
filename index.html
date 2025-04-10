@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!-- DOCUMENTACIÓN
+
+AUTOR: OLIVIER VIAU
+
+HISTORIAL DE MODIFICACIONES:
+    [000] 4/10/2025
+
+Recursos:
+    https://www.w3schools.com/html/html_css.asp
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
+    https://developer.mozilla.org/es/docs/Web/HTTP/Guides/CORS
+    DeepSeek: Conaulta de funciones Async y revisión de codigo para añadir mejores practicas.
+    Tarea API de Ludwing, copiando la estructura del JS.
+    
+-->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tickets</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Incidentes de la fabrica</h1>
+        
+        <div class="form-container">
+            <h2>Reportar Nuevo Incidente</h2>
+            <form id="incidentForm">
+                <div class="form-group">
+                    <label for="reporter">Reportado por:</label>
+                    <input type="text" id="reporter" name="reporter" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Descripción:</label>
+                    <textarea id="description" name="description" rows="4" required minlength="10"></textarea>
+                </div>
+                <button type="submit">Reportar Incidente</button>
+            </form>
+        </div>
+
+
+        <div class="search-container">
+            <h2>Buscar Incidente por ID</h2>
+            <div class="search-group">
+                <input type="number" id="searchId" placeholder="ID del incidente">
+                <button id="searchBtn">Buscar</button>
+            </div>
+            <div id="incidentDetails" class="hidden">
+                <h3>Detalles del Incidente</h3>
+                <div class="detail-item"><strong>ID:</strong> <span id="detail-id"></span></div>
+                <div class="detail-item"><strong>Reportado por:</strong> <span id="detail-reporter"></span></div>
+                <div class="detail-item"><strong>Descripción:</strong> <span id="detail-description"></span></div>
+                <div class="detail-item"><strong>Estado:</strong> 
+                    <select id="detail-status">
+                        <option value="pendiente">Pendiente</option>
+                        <option value="resuelto">Resuelto</option>
+                    </select>
+                </div>
+                <div class="detail-item"><strong>Fecha:</strong> <span id="detail-date"></span></div>
+                <div class="action-buttons">
+                    <button id="updateBtn">Actualizar Estado</button>
+                    <button id="deleteBtn">Eliminar Incidente</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="incidents-container">
+            <h2>Todos los Incidentes</h2>
+            <button id="refreshBtn">Actualizar Lista</button>
+            <div id="incidentsList"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

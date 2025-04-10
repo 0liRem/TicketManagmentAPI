@@ -16,15 +16,17 @@ funciones en la API y se mantenga limpio el codigo.
 
 from flask import Flask, request, jsonify
 from models import db, Incident
+from flask_cors import CORS
 from config import Config
 from datetime import datetime
 import click
 app = Flask(__name__)
 app.config.from_object(Config)
+CORS(app)
 db.init_app(app)
 
 #Estados permitidos
-ALLOWED_STATUSES = ['pendiente', 'en proceso', 'resuelto']
+ALLOWED_STATUSES = ['pendiente', 'resuelto']
 
 @app.route('/incidents', methods=['POST'])
 def create_incident():
